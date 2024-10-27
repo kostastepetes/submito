@@ -28,35 +28,53 @@ watch(() => store.submissions, (newSubmissions) => {
 </script>
 
 <template>
-  <div class="mt-8 flex flex-col">
-    <div class="-my-2 -mx-4 overflow-x-auto sm:-mx-6 lg:-mx-8">
-      <div class="inline-block min-w-full py-2 align-middle md:px-6 lg:px-8">
-        <div class="overflow-hidden shadow ring-1 ring-black ring-opacity-5 md:rounded-lg">
-          <table class="min-w-full divide-y divide-gray-300">
-            <thead class="bg-gray-50">
-              <tr>
-                <th scope="col" class="py-3.5 pl-4 pr-3 text-left text-sm font-semibold text-gray-900">ID</th>
-                <th scope="col" class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">Form Data</th>
-                <th scope="col" class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">Created At</th>
-              </tr>
-            </thead>
-            <tbody class="divide-y divide-gray-200 bg-white">
-              <tr v-for="submission in submissions" :key="submission.id">
-                <td class="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-gray-900">{{ submission.id }}</td>
-                <td class="px-3 py-4 text-sm text-gray-500">
-                  <pre class="whitespace-pre-wrap">{{ JSON.stringify(submission.form_data, null, 2) }}</pre>
-                </td>
-                <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">
-                  {{ new Date(submission.created_at).toLocaleString() }}
-                </td>
-              </tr>
-              <tr v-if="submissions.length === 0">
-                <td colspan="3" class="px-3 py-4 text-sm text-gray-500 text-center">No submissions yet</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-      </div>
+  <div class="w-full px-0 py-0">
+    <h2 class="text-2xl font-bold text-blue-600 mb-4">Submission Table</h2>
+    
+    <div class="bg-white shadow-lg rounded-none overflow-hidden">
+      <table class="w-full bg-white border-collapse">
+        <thead class="bg-blue-100 text-blue-800">
+          <tr>
+            <th class="py-3 px-4 text-left">ID</th>
+            <th class="px-4 py-3 text-left">Form Data</th>
+            <th class="px-4 py-3 text-left">Created At</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr v-for="(submission, index) in submissions" :key="submission.id" :class="{ 'bg-yellow-100': index % 2 === 0 }">
+            <td class="border-b border-gray-200 py-4 px-4">{{ submission.id }}</td>
+            <td class="border-b border-gray-200 py-4 px-4">
+              <pre class="whitespace-pre-wrap bg-red-100 rounded-lg p-2">{{ JSON.stringify(submission.form_data, null, 2) }}</pre>
+            </td>
+            <td class="border-b border-gray-200 py-4 px-4">{{ new Date(submission.created_at).toLocaleString() }}</td>
+          </tr>
+          <tr v-if="submissions.length === 0" class="text-center">
+            <td colspan="3" class="py-4">No submissions yet</td>
+          </tr>
+        </tbody>
+      </table>
     </div>
   </div>
 </template>
+
+<style scoped>
+.table-auto {
+  width: auto;
+}
+
+.bg-blue-100 {
+  background-color: #E0F2FF;
+}
+
+.text-blue-800 {
+  color: #004085;
+}
+
+.bg-yellow-100 {
+  background-color: #FFFDE7;
+}
+
+.bg-red-100 {
+  background-color: #FFF0E6;
+}
+</style>
