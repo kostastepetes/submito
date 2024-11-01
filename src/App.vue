@@ -1,9 +1,15 @@
 <script setup lang="ts">
 import { useAuthStore } from './stores/auth'
-//import { useRouter } from 'vue-router'
+import { useRouter } from 'vue-router'
 
 const auth = useAuthStore()
-//const router = useRouter()
+const router = useRouter() // Initialize the router instance
+
+// Wrap the logout function to include redirection
+function handleLogout() {
+  auth.logout()
+  router.push('/') // Redirect to homepage after logout
+}
 </script>
 
 <template>
@@ -21,7 +27,7 @@ const auth = useAuthStore()
               <router-link to="/dashboard" class="text-gray-700 hover:text-indigo-600 px-3 py-2">
                 Dashboard
               </router-link>
-              <button @click="auth.logout" class="text-gray-700 hover:text-indigo-600 px-3 py-2">
+              <button @click="handleLogout" class="text-gray-700 hover:text-indigo-600 px-3 py-2">
                 Logout
               </button>
             </template>
