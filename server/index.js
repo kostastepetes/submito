@@ -20,7 +20,7 @@ const pool = new Pool({
 
 // Middleware
 app.use(cors({
-  origin: 'http://localhost:5173',
+  origin: ['http://localhost:5173', 'http://submito'],
   credentials: true
 }));
 app.use(express.json());
@@ -176,6 +176,6 @@ app.get('/api/submissions', authenticateToken, async (req, res) => {
 });
 
 const PORT = process.env.PORT || 3000;
-app.listen(PORT, () => {
+app.listen(PORT, '0.0.0.0', () => {
   console.log(`Server running on port ${PORT}`);
 });

@@ -1,7 +1,7 @@
 import { defineStore } from 'pinia'
 import { ref } from 'vue'
 
-const API_URL = 'http://localhost:3000/api'
+const API_URL = 'http://submito/api'
 
 export const useAuthStore = defineStore('auth', () => {
   const user = ref(null)

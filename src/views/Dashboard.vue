@@ -64,12 +64,12 @@ async function createDemoForm() {
         <div v-if="newEndpoint" class="mt-4 p-4 bg-gray-50 rounded-md">
           <h3 class="text-lg font-medium text-gray-900">Your new endpoint:</h3>
           <code class="mt-2 block text-sm text-gray-800 bg-white p-2 rounded border">
-            http://localhost:3000/api/submit/{{ newEndpoint }}
+            http://submito/api/submit/{{ newEndpoint }}
           </code>
           <p class="mt-2 text-sm text-gray-600">
             Use this endpoint as your form's action URL:
           </p>
-          <pre class="mt-2 bg-white p-2 rounded border"><code>&lt;form action="http://localhost:3000/api/submit/{{ newEndpoint }}" method="POST"&gt;
+          <pre class="mt-2 bg-white p-2 rounded border"><code>&lt;form action="http://submito/api/submit/{{ newEndpoint }}" method="POST"&gt;
   &lt;input type="text" name="name" placeholder="Name"&gt;
   &lt;input type="email" name="email" placeholder="Email"&gt;
   &lt;textarea name="message" placeholder="Message"&gt;&lt;/textarea&gt;

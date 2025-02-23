@@ -2,7 +2,9 @@ import { defineStore } from 'pinia'
 import { ref } from 'vue'
 import { useAuthStore } from './auth'
 
-const API_URL = 'http://localhost:3000/api'
+
+
+const API_URL = 'http://submito/api'
 
 interface Submission {
   id: string
